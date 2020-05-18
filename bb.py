@@ -6,7 +6,6 @@ from bestbuy import BestBuyAPI
 from twilio.rest import Client
 
 def checkStock():
-    file = open("output.json", "w")
     #Get the Item SKU's we want to search for
     query = "sku in(" + properties.skus + ")"
     #Query the API and get the json response
@@ -18,7 +17,6 @@ def checkStock():
     #Will return T/F, checks to see if the product can be ordered online
     greyInStock = response_parsed['products'][0]['onlineAvailability']
     colorInStock = response_parsed['products'][1]['onlineAvailability']
-    file.write(json_object)
     return greyInStock,colorInStock
 
 def main():
